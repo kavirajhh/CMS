@@ -1,0 +1,576 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 02, 2021 at 02:59 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `mydb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bank details`
+--
+
+CREATE TABLE `bank details` (
+  `idBank Details` int(11) NOT NULL,
+  `BankName` varchar(45) DEFAULT NULL,
+  `AccNumber` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `catogary`
+--
+
+CREATE TABLE `catogary` (
+  `idCatogary` int(11) NOT NULL,
+  `CatogaryName` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `country`
+--
+
+CREATE TABLE `country` (
+  `countrycode` char(3) NOT NULL,
+  `countryname` varchar(200) NOT NULL,
+  `code` char(2) DEFAULT NULL,
+  `currency` varchar(5) NOT NULL,
+  `currency_rate` int(11) NOT NULL,
+  `select_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `country`
+--
+
+INSERT INTO `country` (`countrycode`, `countryname`, `code`, `currency`, `currency_rate`, `select_status`) VALUES
+('ABW', 'Aruba', 'AW', '0', 0, 0),
+('AFG', 'Afghanistan', 'AF', '0', 0, 0),
+('AGO', 'Angola', 'AO', '0', 0, 0),
+('AIA', 'Anguilla', 'AI', '0', 0, 0),
+('ALA', 'Åland', 'AX', '0', 0, 0),
+('ALB', 'Albania', 'AL', '0', 0, 0),
+('AND', 'Andorra', 'AD', '0', 0, 0),
+('ARE', 'United Arab Emirates', 'AE', '0', 0, 0),
+('ARG', 'Argentina', 'AR', '0', 0, 0),
+('ARM', 'Armenia', 'AM', '0', 0, 0),
+('ASM', 'American Samoa', 'AS', '0', 0, 0),
+('ATA', 'Antarctica', 'AQ', '0', 0, 0),
+('ATF', 'French Southern Territories', 'TF', '0', 0, 0),
+('ATG', 'Antigua and Barbuda', 'AG', '0', 0, 0),
+('AUS', 'Australia', 'AU', '0', 0, 0),
+('AUT', 'Austria', 'AT', '0', 0, 0),
+('AZE', 'Azerbaijan', 'AZ', '0', 0, 0),
+('BDI', 'Burundi', 'BI', '0', 0, 0),
+('BEL', 'Belgium', 'BE', '0', 0, 0),
+('BEN', 'Benin', 'BJ', '0', 0, 0),
+('BES', 'Bonaire', 'BQ', '0', 0, 0),
+('BFA', 'Burkina Faso', 'BF', '0', 0, 0),
+('BGD', 'Bangladesh', 'BD', 'Tk', 100, 1),
+('BGR', 'Bulgaria', 'BG', '0', 0, 0),
+('BHR', 'Bahrain', 'BH', '0', 0, 0),
+('BHS', 'Bahamas', 'BS', '0', 0, 0),
+('BIH', 'Bosnia and Herzegovina', 'BA', '0', 0, 0),
+('BLM', 'Saint Barthélemy', 'BL', '0', 0, 0),
+('BLR', 'Belarus', 'BY', '0', 0, 0),
+('BLZ', 'Belize', 'BZ', '0', 0, 0),
+('BMU', 'Bermuda', 'BM', '0', 0, 0),
+('BOL', 'Bolivia', 'BO', '0', 0, 0),
+('BRA', 'Brazil', 'BR', '0', 0, 0),
+('BRB', 'Barbados', 'BB', '0', 0, 0),
+('BRN', 'Brunei', 'BN', '0', 0, 0),
+('BTN', 'Bhutan', 'BT', '0', 0, 0),
+('BVT', 'Bouvet Island', 'BV', '0', 0, 0),
+('BWA', 'Botswana', 'BW', '0', 0, 0),
+('CAF', 'Central African Republic', 'CF', '0', 0, 0),
+('CAN', 'Canada', 'CA', '0', 0, 0),
+('CCK', 'Cocos [Keeling] Islands', 'CC', '0', 0, 0),
+('CHE', 'Switzerland', 'CH', '0', 0, 0),
+('CHL', 'Chile', 'CL', '0', 0, 0),
+('CHN', 'China', 'CN', '0', 0, 0),
+('CIV', 'Ivory Coast', 'CI', '0', 0, 0),
+('CMR', 'Cameroon', 'CM', '0', 0, 0),
+('COD', 'Democratic Republic of the Congo', 'CD', '0', 0, 0),
+('COG', 'Republic of the Congo', 'CG', '0', 0, 0),
+('COK', 'Cook Islands', 'CK', '0', 0, 0),
+('COL', 'Colombia', 'CO', '0', 0, 0),
+('COM', 'Comoros', 'KM', '0', 0, 0),
+('CPV', 'Cape Verde', 'CV', '0', 0, 0),
+('CRI', 'Costa Rica', 'CR', '0', 0, 0),
+('CUB', 'Cuba', 'CU', '0', 0, 0),
+('CUW', 'Curacao', 'CW', '0', 0, 0),
+('CXR', 'Christmas Island', 'CX', '0', 0, 0),
+('CYM', 'Cayman Islands', 'KY', '0', 0, 0),
+('CYP', 'Cyprus', 'CY', '0', 0, 0),
+('CZE', 'Czech Republic', 'CZ', '0', 0, 0),
+('DEU', 'Germany', 'DE', '0', 0, 0),
+('DJI', 'Djibouti', 'DJ', '0', 0, 0),
+('DMA', 'Dominica', 'DM', '0', 0, 0),
+('DNK', 'Denmark', 'DK', '0', 0, 0),
+('DOM', 'Dominican Republic', 'DO', '0', 0, 0),
+('DZA', 'Algeria', 'DZ', '0', 0, 0),
+('ECU', 'Ecuador', 'EC', '0', 0, 0),
+('EGY', 'Egypt', 'EG', '0', 0, 0),
+('ERI', 'Eritrea', 'ER', '0', 0, 0),
+('ESH', 'Western Sahara', 'EH', '0', 0, 0),
+('ESP', 'Spain', 'ES', '0', 0, 0),
+('EST', 'Estonia', 'EE', '0', 0, 0),
+('ETH', 'Ethiopia', 'ET', '0', 0, 0),
+('FIN', 'Finland', 'FI', '0', 0, 0),
+('FJI', 'Fiji', 'FJ', '0', 0, 0),
+('FLK', 'Falkland Islands', 'FK', '0', 0, 0),
+('FRA', 'France', 'FR', '0', 0, 0),
+('FRO', 'Faroe Islands', 'FO', '0', 0, 0),
+('FSM', 'Micronesia', 'FM', '0', 0, 0),
+('GAB', 'Gabon', 'GA', '0', 0, 0),
+('GBR', 'United Kingdom', 'GB', '0', 0, 0),
+('GEO', 'Georgia', 'GE', '0', 0, 0),
+('GGY', 'Guernsey', 'GG', '0', 0, 0),
+('GHA', 'Ghana', 'GH', '0', 0, 0),
+('GIB', 'Gibraltar', 'GI', '0', 0, 0),
+('GIN', 'Guinea', 'GN', '0', 0, 0),
+('GLP', 'Guadeloupe', 'GP', '0', 0, 0),
+('GMB', 'Gambia', 'GM', '0', 0, 0),
+('GNB', 'Guinea-Bissau', 'GW', '0', 0, 0),
+('GNQ', 'Equatorial Guinea', 'GQ', '0', 0, 0),
+('GRC', 'Greece', 'GR', '0', 0, 0),
+('GRD', 'Grenada', 'GD', '0', 0, 0),
+('GRL', 'Greenland', 'GL', '0', 0, 0),
+('GTM', 'Guatemala', 'GT', '0', 0, 0),
+('GUF', 'French Guiana', 'GF', '0', 0, 0),
+('GUM', 'Guam', 'GU', '0', 0, 0),
+('GUY', 'Guyana', 'GY', '0', 0, 0),
+('HKG', 'Hong Kong', 'HK', '0', 0, 0),
+('HMD', 'Heard Island and McDonald Islands', 'HM', '0', 0, 0),
+('HND', 'Honduras', 'HN', '0', 0, 0),
+('HRV', 'Croatia', 'HR', '0', 0, 0),
+('HTI', 'Haiti', 'HT', '0', 0, 0),
+('HUN', 'Hungary', 'HU', '0', 0, 0),
+('IDN', 'Indonesia', 'ID', 'Rp', 17097, 1),
+('IMN', 'Isle of Man', 'IM', '0', 0, 0),
+('IND', 'India', 'IN', '₹', 88, 1),
+('IOT', 'British Indian Ocean Territory', 'IO', '0', 0, 0),
+('IRL', 'Ireland', 'IE', '0', 0, 0),
+('IRN', 'Iran', 'IR', '0', 0, 0),
+('IRQ', 'Iraq', 'IQ', '0', 0, 0),
+('ISL', 'Iceland', 'IS', '0', 0, 0),
+('ISR', 'Israel', 'IL', '0', 0, 0),
+('ITA', 'Italy', 'IT', '0', 0, 0),
+('JAM', 'Jamaica', 'JM', '0', 0, 0),
+('JEY', 'Jersey', 'JE', '0', 0, 0),
+('JOR', 'Jordan', 'JO', '0', 0, 0),
+('JPN', 'Japan', 'JP', '0', 0, 0),
+('KAZ', 'Kazakhstan', 'KZ', '0', 0, 0),
+('KEN', 'Kenya', 'KE', '0', 0, 0),
+('KGZ', 'Kyrgyzstan', 'KG', '0', 0, 0),
+('KHM', 'Cambodia', 'KH', '0', 0, 0),
+('KIR', 'Kiribati', 'KI', '0', 0, 0),
+('KNA', 'Saint Kitts and Nevis', 'KN', '0', 0, 0),
+('KOR', 'South Korea', 'KR', '0', 0, 0),
+('KWT', 'Kuwait', 'KW', '0', 0, 0),
+('LAO', 'Laos', 'LA', '0', 0, 0),
+('LBN', 'Lebanon', 'LB', '0', 0, 0),
+('LBR', 'Liberia', 'LR', '0', 0, 0),
+('LBY', 'Libya', 'LY', '0', 0, 0),
+('LCA', 'Saint Lucia', 'LC', '0', 0, 0),
+('LIE', 'Liechtenstein', 'LI', '0', 0, 0),
+('LKA', 'Sri Lanka', 'LK', 'Lkr', 236, 1),
+('LSO', 'Lesotho', 'LS', '0', 0, 0),
+('LTU', 'Lithuania', 'LT', '0', 0, 0),
+('LUX', 'Luxembourg', 'LU', '0', 0, 0),
+('LVA', 'Latvia', 'LV', '0', 0, 0),
+('MAC', 'Macao', 'MO', '0', 0, 0),
+('MAF', 'Saint Martin', 'MF', '0', 0, 0),
+('MAR', 'Morocco', 'MA', '0', 0, 0),
+('MCO', 'Monaco', 'MC', '0', 0, 0),
+('MDA', 'Moldova', 'MD', '0', 0, 0),
+('MDG', 'Madagascar', 'MG', '0', 0, 0),
+('MDV', 'Maldives', 'MV', '0', 0, 0),
+('MEX', 'Mexico', 'MX', '0', 0, 0),
+('MHL', 'Marshall Islands', 'MH', '0', 0, 0),
+('MKD', 'Macedonia', 'MK', '0', 0, 0),
+('MLI', 'Mali', 'ML', '0', 0, 0),
+('MLT', 'Malta', 'MT', '0', 0, 0),
+('MMR', 'Myanmar [Burma]', 'MM', '0', 0, 0),
+('MNE', 'Montenegro', 'ME', '0', 0, 0),
+('MNG', 'Mongolia', 'MN', '0', 0, 0),
+('MNP', 'Northern Mariana Islands', 'MP', '0', 0, 0),
+('MOZ', 'Mozambique', 'MZ', '0', 0, 0),
+('MRT', 'Mauritania', 'MR', '0', 0, 0),
+('MSR', 'Montserrat', 'MS', '0', 0, 0),
+('MTQ', 'Martinique', 'MQ', '0', 0, 0),
+('MUS', 'Mauritius', 'MU', '0', 0, 0),
+('MWI', 'Malawi', 'MW', '0', 0, 0),
+('MYS', 'Malaysia', 'MY', '0', 0, 0),
+('MYT', 'Mayotte', 'YT', '0', 0, 0),
+('NAM', 'Namibia', 'NA', '0', 0, 0),
+('NCL', 'New Caledonia', 'NC', '0', 0, 0),
+('NER', 'Niger', 'NE', '0', 0, 0),
+('NFK', 'Norfolk Island', 'NF', '0', 0, 0),
+('NGA', 'Nigeria', 'NG', '0', 0, 0),
+('NIC', 'Nicaragua', 'NI', '0', 0, 0),
+('NIU', 'Niue', 'NU', '0', 0, 0),
+('NLD', 'Netherlands', 'NL', '0', 0, 0),
+('NOR', 'Norway', 'NO', '0', 0, 0),
+('NPL', 'Nepal', 'NP', '0', 0, 0),
+('NRU', 'Nauru', 'NR', '0', 0, 0),
+('NZL', 'New Zealand', 'NZ', '0', 0, 0),
+('OMN', 'Oman', 'OM', '0', 0, 0),
+('PAK', 'Pakistan', 'PK', 'Pkr', 192, 1),
+('PAN', 'Panama', 'PA', '0', 0, 0),
+('PCN', 'Pitcairn Islands', 'PN', '0', 0, 0),
+('PER', 'Peru', 'PE', '0', 0, 0),
+('PHL', 'Philippines', 'PH', '0', 0, 0),
+('PLW', 'Palau', 'PW', '0', 0, 0),
+('PNG', 'Papua New Guinea', 'PG', '0', 0, 0),
+('POL', 'Poland', 'PL', '0', 0, 0),
+('PRI', 'Puerto Rico', 'PR', '0', 0, 0),
+('PRK', 'North Korea', 'KP', '0', 0, 0),
+('PRT', 'Portugal', 'PT', '0', 0, 0),
+('PRY', 'Paraguay', 'PY', '0', 0, 0),
+('PSE', 'Palestine', 'PS', '0', 0, 0),
+('PYF', 'French Polynesia', 'PF', '0', 0, 0),
+('QAT', 'Qatar', 'QA', '0', 0, 0),
+('REU', 'Réunion', 'RE', '0', 0, 0),
+('ROU', 'Romania', 'RO', '0', 0, 0),
+('RUS', 'Russia', 'RU', '0', 0, 0),
+('RWA', 'Rwanda', 'RW', '0', 0, 0),
+('SAU', 'Saudi Arabia', 'SA', '0', 0, 0),
+('SDN', 'Sudan', 'SD', '0', 0, 0),
+('SEN', 'Senegal', 'SN', '0', 0, 0),
+('SGP', 'Singapore', 'SG', '0', 0, 0),
+('SGS', 'South Georgia and the South Sandwich Islands', 'GS', '0', 0, 0),
+('SHN', 'Saint Helena', 'SH', '0', 0, 0),
+('SJM', 'Svalbard and Jan Mayen', 'SJ', '0', 0, 0),
+('SLB', 'Solomon Islands', 'SB', '0', 0, 0),
+('SLE', 'Sierra Leone', 'SL', '0', 0, 0),
+('SLV', 'El Salvador', 'SV', '0', 0, 0),
+('SMR', 'San Marino', 'SM', '0', 0, 0),
+('SOM', 'Somalia', 'SO', '0', 0, 0),
+('SPM', 'Saint Pierre and Miquelon', 'PM', '0', 0, 0),
+('SRB', 'Serbia', 'RS', '0', 0, 0),
+('SSD', 'South Sudan', 'SS', '0', 0, 0),
+('STP', 'São Tomé and Príncipe', 'ST', '0', 0, 0),
+('SUR', 'Suriname', 'SR', '0', 0, 0),
+('SVK', 'Slovakia', 'SK', '0', 0, 0),
+('SVN', 'Slovenia', 'SI', '0', 0, 0),
+('SWE', 'Sweden', 'SE', '0', 0, 0),
+('SWZ', 'Swaziland', 'SZ', '0', 0, 0),
+('SXM', 'Sint Maarten', 'SX', '0', 0, 0),
+('SYC', 'Seychelles', 'SC', '0', 0, 0),
+('SYR', 'Syria', 'SY', '0', 0, 0),
+('TCA', 'Turks and Caicos Islands', 'TC', '0', 0, 0),
+('TCD', 'Chad', 'TD', '0', 0, 0),
+('TGO', 'Togo', 'TG', '0', 0, 0),
+('THA', 'Thailand', 'TH', 'bhat', 39, 1),
+('TJK', 'Tajikistan', 'TJ', '0', 0, 0),
+('TKL', 'Tokelau', 'TK', '0', 0, 0),
+('TKM', 'Turkmenistan', 'TM', '0', 0, 0),
+('TLS', 'East Timor', 'TL', '0', 0, 0),
+('TON', 'Tonga', 'TO', '0', 0, 0),
+('TTO', 'Trinidad and Tobago', 'TT', '0', 0, 0),
+('TUN', 'Tunisia', 'TN', '0', 0, 0),
+('TUR', 'Turkey', 'TR', '0', 0, 0),
+('TUV', 'Tuvalu', 'TV', '0', 0, 0),
+('TWN', 'Taiwan', 'TW', '0', 0, 0),
+('TZA', 'Tanzania', 'TZ', '0', 0, 0),
+('UGA', 'Uganda', 'UG', '0', 0, 0),
+('UKR', 'Ukraine', 'UA', '0', 0, 0),
+('UMI', 'U.S. Minor Outlying Islands', 'UM', '0', 0, 0),
+('URY', 'Uruguay', 'UY', '0', 0, 0),
+('USA', 'United States', 'US', '0', 0, 0),
+('UZB', 'Uzbekistan', 'UZ', '0', 0, 0),
+('VAT', 'Vatican City', 'VA', '0', 0, 0),
+('VCT', 'Saint Vincent and the Grenadines', 'VC', '0', 0, 0),
+('VEN', 'Venezuela', 'VE', '0', 0, 0),
+('VGB', 'British Virgin Islands', 'VG', '0', 0, 0),
+('VIR', 'U.S. Virgin Islands', 'VI', '0', 0, 0),
+('VNM', 'Vietnam', 'VN', 'dong', 27165, 1),
+('VUT', 'Vanuatu', 'VU', '0', 0, 0),
+('WLF', 'Wallis and Futuna', 'WF', '0', 0, 0),
+('WSM', 'Samoa', 'WS', '0', 0, 0),
+('XKX', 'Kosovo', 'XK', '0', 0, 0),
+('YEM', 'Yemen', 'YE', '0', 0, 0),
+('ZAF', 'South Africa', 'ZA', '0', 0, 0),
+('ZMB', 'Zambia', 'ZM', '0', 0, 0),
+('ZWE', 'Zimbabwe', 'ZW', '0', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `idCourse` int(11) NOT NULL,
+  `CName` varchar(45) DEFAULT NULL,
+  `fee` int(11) NOT NULL,
+  `countrycode` varchar(5) NOT NULL,
+  `delstatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`idCourse`, `CName`, `fee`, `countrycode`, `delstatus`) VALUES
+(2, 'PHP Programming For Beginners', 50000, 'LK', 1),
+(5, 'Black Belt', 12000, 'LK', 1),
+(7, 'Black belt 2', 45800, 'IN', 1),
+(10, '5s Audit ', 8000, 'LK', 1),
+(12, 'Quality certificates', 35000, 'PK', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_send`
+--
+
+CREATE TABLE `invoice_send` (
+  `idInvoice` int(11) NOT NULL,
+  `Date` timestamp NULL DEFAULT NULL,
+  `StdEmail` varchar(45) DEFAULT NULL,
+  `StdName` varchar(45) DEFAULT NULL,
+  `StdAdd` varchar(45) DEFAULT NULL,
+  `CoursePrice` int(11) NOT NULL,
+  `Discount` int(11) DEFAULT NULL,
+  `idCourse` varchar(45) DEFAULT NULL,
+  `SenderId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_registration`
+--
+
+CREATE TABLE `student_registration` (
+  `idStudent` int(11) NOT NULL,
+  `FName` varchar(45) DEFAULT NULL,
+  `LName` varchar(45) DEFAULT NULL,
+  `Country` varchar(45) DEFAULT NULL,
+  `Tp` int(11) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
+  `organizaton` varchar(20) NOT NULL,
+  `position` varchar(10) NOT NULL,
+  `contact_through` varchar(10) NOT NULL,
+  `Courseid` varchar(45) DEFAULT NULL,
+  `discount` int(11) NOT NULL,
+  `SenderId` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `qStatus` int(11) DEFAULT NULL,
+  `delstatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `student_registration`
+--
+
+INSERT INTO `student_registration` (`idStudent`, `FName`, `LName`, `Country`, `Tp`, `Email`, `organizaton`, `position`, `contact_through`, `Courseid`, `discount`, `SenderId`, `date`, `qStatus`, `delstatus`) VALUES
+(46, 'Hemal', 'Kaviraj', 'PK', 776578578, 'kavirajhh@yahoo.com', 'iwave', 'MD', 'Facebook', '10', 10, 16, '2021-07-30 12:16:48', 0, 0),
+(47, 'Hemal', 'Kaviraj', 'PK', 776578578, 'kavirajhh@yahoo.com', 'Tokyo cement company', 'manager', 'Facebook', '2', 10, 16, '2021-07-31 15:59:12', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_registration2`
+--
+
+CREATE TABLE `student_registration2` (
+  `idStudent` int(11) NOT NULL,
+  `FName` varchar(45) DEFAULT NULL,
+  `LName` varchar(45) DEFAULT NULL,
+  `Country` varchar(45) DEFAULT NULL,
+  `Tp` int(11) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
+  `organizaton` varchar(20) NOT NULL,
+  `position` varchar(10) NOT NULL,
+  `contact_through` varchar(10) NOT NULL,
+  `Courseid` varchar(45) DEFAULT NULL,
+  `discount` int(11) NOT NULL,
+  `SenderId` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `qStatus` int(11) DEFAULT NULL,
+  `delstatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `student_registration2`
+--
+
+INSERT INTO `student_registration2` (`idStudent`, `FName`, `LName`, `Country`, `Tp`, `Email`, `organizaton`, `position`, `contact_through`, `Courseid`, `discount`, `SenderId`, `date`, `qStatus`, `delstatus`) VALUES
+(46, 'Hemal', 'Kaviraj', 'PK', 776578578, 'kavirajhh@yahoo.com', 'iwave', 'MD', 'Facebook', '10', 10, 16, '2021-07-30 06:46:48', 0, 0),
+(47, 'Hemal', 'Kaviraj', 'PK', 776578578, 'kavirajhh@yahoo.com', 'iwave', 'manager', 'LinkedIn', '5', 10, 16, '2021-07-31 15:35:04', 0, 0),
+(48, 'saman', 'kumara', 'PK', 1112, 'info@heezi.net', 'heezi', 'developer', 'Facebook', '2', 25, 16, '2021-07-31 15:35:56', 0, 0),
+(49, 'Hemalkapila', 'gunawardena', 'PK', 776578578, 'info@heezi.com', 'iwave', 'tech', 'Facebook', '5', 10, 16, '2021-07-31 15:48:37', 0, 0),
+(50, 'Hemal', 'Kaviraj', 'PK', 776578578, 'kavirajhh@yahoo.com', 'iwave', '', 'Facebook', '12', 10, 16, '2021-08-01 01:50:41', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `idUsers` int(11) NOT NULL,
+  `Username` varchar(10) NOT NULL,
+  `pw` varchar(45) DEFAULT NULL,
+  `FName` varchar(45) DEFAULT NULL,
+  `LName` varchar(45) DEFAULT NULL,
+  `ustatus` varchar(45) DEFAULT NULL,
+  `TP` int(11) DEFAULT NULL,
+  `countrycode` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `privilages` varchar(100) NOT NULL,
+  `delstatus` int(11) NOT NULL,
+  `bankAccountNumber` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`idUsers`, `Username`, `pw`, `FName`, `LName`, `ustatus`, `TP`, `countrycode`, `email`, `privilages`, `delstatus`, `bankAccountNumber`) VALUES
+(1, 'admin', '123456', 'Keshan', 'Harsha', '1', 714001381, 'LK', 'kehanharsha1999@gmail.com', 'abcdefgh', 0, 0),
+(14, 'user1', '123', 'India', 'Manager', '2', 1245789658, 'IN', 'India@gmail.com', '', 0, 0),
+(15, 'user', '123', 'Hemal', 'Kaviraj', '2', 776578578, 'LK', 'kavirajhh@yahoo.com', '', 0, 0),
+(16, 'Hemal', 'Kaviraj', 'Hemal', 'Kaviraj', '2', 776578578, 'PK', 'kavirajhh@yahoo.com', '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userstatus`
+--
+
+CREATE TABLE `userstatus` (
+  `iduserstatus` int(11) NOT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `privilages` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userstatus`
+--
+
+INSERT INTO `userstatus` (`iduserstatus`, `type`, `privilages`) VALUES
+(1, 'Admin', 'acdefghijklmnopqrz'),
+(2, 'Country Manager', 'abc');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bank details`
+--
+ALTER TABLE `bank details`
+  ADD PRIMARY KEY (`idBank Details`);
+
+--
+-- Indexes for table `catogary`
+--
+ALTER TABLE `catogary`
+  ADD PRIMARY KEY (`idCatogary`);
+
+--
+-- Indexes for table `country`
+--
+ALTER TABLE `country`
+  ADD PRIMARY KEY (`countrycode`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`idCourse`);
+
+--
+-- Indexes for table `invoice_send`
+--
+ALTER TABLE `invoice_send`
+  ADD PRIMARY KEY (`idInvoice`);
+
+--
+-- Indexes for table `student_registration`
+--
+ALTER TABLE `student_registration`
+  ADD PRIMARY KEY (`idStudent`);
+
+--
+-- Indexes for table `student_registration2`
+--
+ALTER TABLE `student_registration2`
+  ADD PRIMARY KEY (`idStudent`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`idUsers`);
+
+--
+-- Indexes for table `userstatus`
+--
+ALTER TABLE `userstatus`
+  ADD PRIMARY KEY (`iduserstatus`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `catogary`
+--
+ALTER TABLE `catogary`
+  MODIFY `idCatogary` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `idCourse` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `invoice_send`
+--
+ALTER TABLE `invoice_send`
+  MODIFY `idInvoice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `student_registration`
+--
+ALTER TABLE `student_registration`
+  MODIFY `idStudent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `student_registration2`
+--
+ALTER TABLE `student_registration2`
+  MODIFY `idStudent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `userstatus`
+--
+ALTER TABLE `userstatus`
+  MODIFY `iduserstatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
